@@ -1,0 +1,239 @@
+ {% block head %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> {% endblock %} {% block body %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        thead {
+            background-color: black;
+            color: #dcdcdc;
+        }
+        
+        th {
+            white-space: nowrap;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="content">
+        <nav class="navbar navbar-dark bg-dark mb-4">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Air Temperature Prediction</span>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card p-3">
+
+                        <h3 class="text-center fw-bold">Search</h3>
+
+                        <div class="form">
+                            <form action="/model" method="POST">
+
+                                <div class="mb-3">
+                                    <label for="Process_temperature" class="form-label">Process Temperature</label>
+                                    <input type="text" class="form-control" name="Process_temperature" id="Process_temperature" aria-describedby="emailHelp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Rotational_speed" class="form-label">Rotational Speed</label>
+                                    <input type="text" class="form-control" name="Rotational_speed" id="Rotational_speed" aria-describedby="emailHelp">
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="Torque" class="form-label">Torque</label>
+                                    <input type="text" class="form-control" name="Torque" id="Torque" aria-describedby="emailHelp">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Tool_wear" class="form-label">Tool Wear</label>
+                                    <input type="text" class="form-control" name="Tool_wear" id="Tool_wear" aria-describedby="emailHelp">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="Machine_failure" class="form-label">Machine Failure</label>
+                                    <input type="text" class="form-control" name="Machine_failure" id="Machine_failure" aria-describedby="emailHelp">
+                                </div>
+
+
+                                <input type="submit" class="btn btn-success w-100" value="Search">
+                            </form>
+                        </div>
+                        <div class="form">
+                            <div class="text-center mt-3">
+
+                                <form action="/report" method="POST" target="_blank">
+                                    <input type="submit" value="Report" class="btn btn-warning">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="card p-3">
+                        <table border="1" class="dataframe">
+                            <thead>
+                                <tr style="text-align: right;">
+                                    <th>Product ID</th>
+                                    <th>Type</th>
+                                    <th>Air_temperature</th>
+                                    <th>Process_temperature</th>
+                                    <th>Rotational_speed</th>
+                                    <th>Torque</th>
+                                    <th>Tool_wear</th>
+                                    <th>Machine_failure</th>
+                                    <th>TWF</th>
+                                    <th>HDF</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>M14860</td>
+                                    <td>M</td>
+                                    <td>298.1</td>
+                                    <td>308.6</td>
+                                    <td>1551</td>
+                                    <td>42.8</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>L47181</td>
+                                    <td>L</td>
+                                    <td>298.2</td>
+                                    <td>308.7</td>
+                                    <td>1408</td>
+                                    <td>46.3</td>
+                                    <td>3</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>L47182</td>
+                                    <td>L</td>
+                                    <td>298.1</td>
+                                    <td>308.5</td>
+                                    <td>1498</td>
+                                    <td>49.4</td>
+                                    <td>5</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>L47183</td>
+                                    <td>L</td>
+                                    <td>298.2</td>
+                                    <td>308.6</td>
+                                    <td>1433</td>
+                                    <td>39.5</td>
+                                    <td>7</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>L47184</td>
+                                    <td>L</td>
+                                    <td>298.2</td>
+                                    <td>308.7</td>
+                                    <td>1408</td>
+                                    <td>40.0</td>
+                                    <td>9</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>M14865</td>
+                                    <td>M</td>
+                                    <td>298.1</td>
+                                    <td>308.6</td>
+                                    <td>1425</td>
+                                    <td>41.9</td>
+                                    <td>11</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>L47186</td>
+                                    <td>L</td>
+                                    <td>298.1</td>
+                                    <td>308.6</td>
+                                    <td>1558</td>
+                                    <td>42.4</td>
+                                    <td>14</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>L47187</td>
+                                    <td>L</td>
+                                    <td>298.1</td>
+                                    <td>308.6</td>
+                                    <td>1527</td>
+                                    <td>40.2</td>
+                                    <td>16</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>M14868</td>
+                                    <td>M</td>
+                                    <td>298.3</td>
+                                    <td>308.7</td>
+                                    <td>1667</td>
+                                    <td>28.6</td>
+                                    <td>18</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>M14869</td>
+                                    <td>M</td>
+                                    <td>298.5</td>
+                                    <td>309.0</td>
+                                    <td>1741</td>
+                                    <td>28.0</td>
+                                    <td>21</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>
